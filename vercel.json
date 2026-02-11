@@ -1,8 +1,18 @@
 {
-    "rewrites": [
+    "builds": [
         {
-            "source": "/(.*)",
-            "destination": "/dashbot/wsgi.py"
+            "src": "dashbot/wsgi.py",
+            "use": "@vercel/python",
+            "config": {
+                "maxLambdaSize": "15mb",
+                "runtime": "python3.12"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "dashbot/wsgi.py"
         }
     ]
 }
